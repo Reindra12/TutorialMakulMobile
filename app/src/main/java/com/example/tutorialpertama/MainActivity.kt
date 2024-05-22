@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.tutorialpertama.Register.RegisterActivity
+import com.example.tutorialpertama.Login.RegisterActivity
 import com.example.tutorialpertama.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
-    android:background="#F3F5F6"
+    android:background="@drawable/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Register.RegisterActivity">
+    tools:context=".Login.RegisterActivity">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -60,6 +60,8 @@
                     android:id="@+id/tv_nama"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_name"
+                    android:drawablePadding="5dp"
                     android:hint="Nama" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -78,6 +80,8 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_email"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="5dp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Email" />
@@ -101,6 +105,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Tanggal Lahir"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawablePadding="5dp"
                     android:inputType="date" />
             </com.google.android.material.textfield.TextInputLayout>
 
@@ -121,6 +127,8 @@
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_username"
                     android:layout_width="match_parent"
+                    android:drawableStart="@drawable/ic_user"
+                    android:drawablePadding="5dp"
                     android:layout_height="wrap_content"
                     android:hint="Username" />
 
@@ -144,6 +152,9 @@
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/tv_password"
+                    android:drawablePadding="5dp"
+                    android:inputType="textPassword"
+                    android:drawableStart="@drawable/ic_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="Password" />

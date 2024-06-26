@@ -2,13 +2,21 @@ package com.example.tutorialpertama.Login
 
 import android.content.Intent
 import android.os.Bundle
+import retrofit2.Callback
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.tutorialpertama.LoginActivity
 import com.example.tutorialpertama.R
+import com.example.tutorialpertama.data.remote.ApiConfigRetrofit
+import com.example.tutorialpertama.data.remote.ApiServiceRetrofit
+import com.example.tutorialpertama.data.remote.model.RegisterRequest
+import com.example.tutorialpertama.data.remote.model.RegisterResponse
 import com.example.tutorialpertama.databinding.ActivityRegisterBinding
+import retrofit2.Call
+import retrofit2.Response
 
 class RegisterActivity : AppCompatActivity() {
     private val binding: ActivityRegisterBinding by lazy {
@@ -24,12 +32,46 @@ class RegisterActivity : AppCompatActivity() {
             insets
         }
 
+
+
+
         binding.btnRegister.setOnClickListener {
+            
             if (GoToRegister()){
-                startActivity(Intent(this, LoginActivity::class.java))
+                var name = binding.tvNama.text.toString().trim()
+                var email = binding.tvEmail.text.toString().trim()
+                var password = binding.tvPassword.text.toString().trim()
+
+
+                fetchData(name, email, password, "https://picsum.photos/800")
+
             }
             }
         }
+
+    private fun fetchData(name: String, email: String, password: String, avatar: String) {
+            val request = RegisterRequest(name, email, password, avatar)
+            ApiConfigRetrofit.instance.registerUser(request).enqueue(object : Callback<RegisterResponse> {
+                override fun onResponse(call: Call<RegisterResponse>, response: Response<RegisterResponse>) {
+                    if (response.isSuccessful) {
+                        val responseBody = response.body()
+                        val intent = Intent(this@RegisterActivity, LoginActivity::class.java)
+                        intent.putExtra("email", email)
+                        intent.putExtra("password", password)
+                        startActivity(intent)
+                        finish()
+                        Toast.makeText(this@RegisterActivity, "Welcome ${responseBody?.name}!", Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(this@RegisterActivity, "Registration failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onFailure(call: Call<RegisterResponse>, t: Throwable) {
+                    Toast.makeText(this@RegisterActivity, t.message, Toast.LENGTH_SHORT).show()
+                }
+            })
+        }
+
 
     private fun GoToRegister(): Boolean {
         var name = binding.tvNama.text.toString().trim()

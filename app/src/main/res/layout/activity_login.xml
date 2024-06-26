@@ -89,6 +89,28 @@
                     android:hint="Password" />
             </com.google.android.material.textfield.TextInputLayout>
 
+           <LinearLayout
+               android:layout_width="match_parent"
+               android:layout_height="wrap_content"
+               android:orientation="horizontal">
+
+               <TextView
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Belum Memiliki Akun?"
+                   android:layout_marginStart="20dp"
+                   />
+
+               <TextView
+                   android:id="@+id/tv_register"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:text="Daftar"
+                   android:textStyle="bold"
+                   android:textColor="#3F51B5"
+                   android:layout_marginStart="5dp"
+                   />
+           </LinearLayout>
             <Button
                 android:id="@+id/btn_register"
                 android:layout_width="match_parent"
